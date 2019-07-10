@@ -1,2 +1,2 @@
 # techtonica-assignments
-Daily deliverables
+Techtonica's assignments and deliverables.
