@@ -7,7 +7,7 @@ Nothing at the moment, stay tuned.
 
 ## Authors
 
-* **Jennifer Lê Jowett** - *Initial work* - [JnnnLe](https://github.com/jnnnle)
+* **Jennifer Lê Jowett** - [JnnnLe](https://github.com/jnnnle)
 
 ## License
 
