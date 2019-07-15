@@ -1,10 +1,6 @@
 # techtonica-assignments
 Techtonica's assignments and deliverables.
 
-## Getting Started
-
-Nothing at the moment, stay tuned.
-
 ## Authors
 
 * **Jennifer Lê Jowett** - *Initial work* - [JnnnLe](https://github.com/jnnnle)
