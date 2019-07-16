@@ -1,14 +1,3 @@
-/* Change the font and font color of your headings and paragraphs
-Constrain the description to the width of the image
-Make the image and ingredients appear on the left
-Make the instructions appear on the right
-Obtain a code review from Techtonica staff once you've fulfilled these requirements */
-/* 
-font-family: 'Notable', sans-serif;
-font-family: 'Barlow', sans-serif;
-font-family: 'Permanent Marker', cursive;
-font-family: 'Cinzel', serif;
-font-family: 'Barlow Condensed', sans-serif; */
 h1 {
   font-family: 'Barlow Condensed', sans-serif;
   text-decoration: underline;
