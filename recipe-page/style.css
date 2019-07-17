@@ -1,9 +1,24 @@
+html {
+  box-sizing: border-box;
+}
+/* inherit border-box on all elements in the universe and before and after
+ */
+*, 
+*:before, 
+*:after {
+  box-sizing: inherit;
+}
+
 h1 {
   font-family: 'Barlow Condensed', sans-serif;
   text-decoration: underline;
 }
 
-h2{
+#intro {
+  width: 45%;
+}
+
+h2 {
   font-family: 'Barlow', sans-serif;
 }
 
@@ -12,14 +27,11 @@ p, li {
 }
 
 .instructions {
-  display: flex;
-  justify-content: space-around;
+  column-count: 2;
 }
 
 img {
   height: 950px;
-  display: flex;
-  align-items: flex-end;
 }
 
 #similar-recipes {
