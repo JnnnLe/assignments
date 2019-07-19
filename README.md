@@ -12,4 +12,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used, special thanks: 
-  portfolio project used https://speckyboy.com/css-javascript-text-animation-snippets/
+
+  * portfolio project https://speckyboy.com/css-javascript-text-animation-snippets/
