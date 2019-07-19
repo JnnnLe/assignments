@@ -27,7 +27,7 @@ p, li {
 }
 
 .instructions {
-  column-count: 2;
+  display: flex;
 }
 
 img {
