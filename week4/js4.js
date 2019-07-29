@@ -21,3 +21,14 @@ const moreVacations = arr => {
 };
 
 moreVacations([ ['Tammy', ['Tahiti', 'Bali', 'Hawaii']], ['Erin', ['Banff, Alberta, Canada', 'Iceland']], ['Janet', ['London', 'Hogwarts']] ]);
+
+// Challenge
+const muliplicationTable1To10 = () => {
+  for (let x = 1; x <=10; x++) {
+    for (let y = 1; y <= 10; y++) {;
+      console.log(`${x} x ${y} = ${x * y}`)
+    }
+  }
+};
+
+muliplicationTable1To10();
