@@ -20,7 +20,22 @@ describe("countWords", function() {
 });
 
 // CodeWars: First non-repeating character
+const firstNonRepeatingLetter = str => {
+  let obj = {};
 
+	for (let i = 0; i < str.length; i++) {
+		obj[str[i].toLowerCase()] = obj[str[i].toLowerCase()] +1 || 1;
+  }
+  
+	for (let k in obj) {
+		if (obj[k] === 1) {
+		  // console.log(str[str.toLowerCase().indexOf(k)]);
+      return str[str.toLowerCase().indexOf(k)];
+		}
+  }
+  
+	return `No orignal letters`;
+};
 
 
 // Challenge: Ping Pong Pairing
