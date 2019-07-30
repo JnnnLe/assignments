@@ -15,6 +15,12 @@ describe("countWords", function() {
   // challenge: Try to find some input where the fn gives the wrong result
   it("it should ignore punctuations", function() {
     expect(countWords("!!#$%%$#.")).toBe(0); 
-    // now the programmar must go back to modify their function tofilter out punctuations because puncutations !== words
+    // now the programmar must go back to modify their function to filter out punctuations because puncutations !== words
   })
 });
+
+// CodeWars: First non-repeating character
+
+
+
+// Challenge: Ping Pong Pairing
