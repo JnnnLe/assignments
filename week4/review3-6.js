@@ -1,6 +1,8 @@
 // Challenge 1: Define a function called metersToInches that takes an input of the number of meters and outputs the result of the number of inches.
 // 1 meter equals 39.3701 inches.
 
+// Time Complexity: (O)1 Constant 
+
 const metersToInches = m => {
   return `${m} meters is equal to ${m * 39.3701} inches`;
 };
@@ -10,6 +12,8 @@ const metersToInches = m => {
 [Challenge 2] - Loop n Times
 Write a function named loopThrough that takes an argument that is a number and loops through and displays a message “Hello World” that number of times.
 */
+
+// Time Complexity: (O)n Linear 
 
 const loopThrough = n => {
   for (let i = 0; i < n; i++) {
@@ -22,6 +26,8 @@ const loopThrough = n => {
 [Challenge 3] - Number sum
 Define a method called calculateSum to calculate the sum all the digits from 0 to an input number.
 */
+
+// Time Complexity: (O)n Linear
 
 const calculateSum = n => {
   let sum = 0;
@@ -42,6 +48,8 @@ For each multiple of 3, print "Fizz" instead of the number.
 For each multiple of 5, print "Buzz" instead of the number.
 For numbers which are multiples of both 3 and 5, print "FizzBuzz" instead of the number.
 */
+
+// Time Complexity: (O)n Linear
 
 const fizzBuzz = n => {
   if (n === 0) return;
@@ -64,6 +72,8 @@ const fizzBuzz = n => {
 A factorial number is the concept in math by value of multiplying numbers by each consecutively smaller number.
 */
 
+// Time Complexity: (O)n
+
 const factorial = n => {
   let sum = 1;
   if (n <= 2) {
@@ -79,7 +89,10 @@ const factorial = n => {
 Using a switch statement, write a function called sleep_in(weekday, vacation) with these criteria: The parameter weekday is True if it is a weekday, and the parameter vacation is True if we are on vacation. We sleep in if it is not a weekday or we're on vacation. Return True if we sleep in.
 */
 
+// Time Complexity: (0)1 Constant Time?
+
 const sleep_in = (day, vacation) => {
+
   switch (day) {
     case `False`:
       switch (vacation) {
@@ -105,6 +118,8 @@ const sleep_in = (day, vacation) => {
 [Challenge 7] Accessing Arrays
 Write a function called common(a, b) with these criteria: Given 2 arrays of ints, a and b, return True if they have the same first element or they have the same last element. Both arrays will be length 1 or more.
 */
+
+// Time Complexity: (O)1 Constant
 
 const common = (a, b) => {
   if (a[0] === b[0]) return `True`;
@@ -163,6 +178,8 @@ let family = [
     pets: true
   }
 ];
+
+// Time Complexity: (O)n Linear
 
 const print2ndValue = arrOfObjs => {
   for (let i = 0; i < arrOfObjs.length; i++) {
