@@ -72,3 +72,30 @@ const factorial = n => {
 
   return sum = n * factorial(n - 1);  
 };
+
+
+/*
+[Challenge 6] Switch Statements
+Using a switch statement, write a function called sleep_in(weekday, vacation) with these criteria: The parameter weekday is True if it is a weekday, and the parameter vacation is True if we are on vacation. We sleep in if it is not a weekday or we're on vacation. Return True if we sleep in.
+*/
+
+const sleep_in = (day, vacation) => {
+  switch (day) {
+    case `False`:
+      switch (vacation) {
+        case `False`:
+          console.log(`True`);
+          break;
+
+        case `True`:
+          console.log(`True`);
+          break;
+      }
+    
+      break;
+      
+    default:
+      console.log(`False`);
+      break;
+  }
+};
