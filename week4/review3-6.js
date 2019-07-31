@@ -99,3 +99,73 @@ const sleep_in = (day, vacation) => {
       break;
   }
 };
+
+
+/*
+[Challenge 7] Accessing Arrays
+Write a function called common(a, b) with these criteria: Given 2 arrays of ints, a and b, return True if they have the same first element or they have the same last element. Both arrays will be length 1 or more.
+*/
+
+const common = (a, b) => {
+  if (a[0] === b[0]) return `True`;
+  else if (a[a.length - 1] === b[b.length - 1]) return `True`;
+  return `False`;
+};
+
+
+/*
+[Challenge 9] Object Keys and Values
+Create an object with two key-value pairs.
+
+Log that object to the console.
+
+Delete the first key-value pair in the object.
+
+Log that object to the console again. The first key-value pair should be gone.
+*/
+
+let leJowett = {
+  firstName: `Jennifer`,
+  pets: true
+};
+
+delete leJowett.firstName;
+
+console.log(leJowett);
+
+
+/*
+[Challenge 9] Mutating Objects
+Create an array of objects with at least 2 key value pairs. The objects should all have the same keys, and the array should contain at least 3 objects.
+
+Create a function that accepts the array of objects as an argument.
+
+Print the value of the second key in each object to the console. Use dot-notation to access the values.
+
+After printing the values in step 3, change the values of the second key in every object to something new.
+
+Prove the change worked by printing the second key in each object to the console, which should show the new value. Use bracket-notation to access the values this time.
+*/
+
+let family = [
+  {
+    firstName: `Jennifer`,
+    pets: true
+  },
+
+  {
+    firstName: `Max`,
+    pets: true
+  },
+
+  {
+    firstName: `Good Vibes`,
+    pets: true
+  }
+];
+
+const print2ndValue = arrOfObjs => {
+  for (let i = 0; i < arrOfObjs.length; i++) {
+    console.log(arrOfObjs[i].pets = `something new`);
+  }
+};
