@@ -75,12 +75,11 @@ A factorial number is the concept in math by value of multiplying numbers by eac
 // Time Complexity: O(n)
 
 const factorial = n => {
-  let sum = 1;
-  if (n <= 2) {
-    return sum = sum * n;
+  if (n === 1) {
+    return 1;
   }
 
-  return sum = n * factorial(n - 1);  
+  return n * factorial(n - 1);  
 };
 
 
