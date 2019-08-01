@@ -72,7 +72,7 @@ const fizzBuzz = n => {
 A factorial number is the concept in math by value of multiplying numbers by each consecutively smaller number.
 */
 
-// Time Complexity: O(n)
+// Time Complexity: O(C ^ n)
 
 const factorial = n => {
   let sum = 1;
