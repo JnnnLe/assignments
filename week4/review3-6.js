@@ -165,17 +165,17 @@ Prove the change worked by printing the second key in each object to the console
 let family = [
   {
     firstName: `Jennifer`,
-    pets: true
+    age: true
   },
 
   {
     firstName: `Max`,
-    pets: true
+    age: true
   },
 
   {
     firstName: `Good Vibes`,
-    pets: true
+    age: true
   }
 ];
 
@@ -183,6 +183,6 @@ let family = [
 
 const print2ndValue = arrOfObjs => {
   for (let i = 0; i < arrOfObjs.length; i++) {
-    console.log(arrOfObjs[i].pets = `something new`);
+    console.log(arrOfObjs[i].age = Math.floor(Math.random() * `something new, looks like we will be going back in time`.length));
   }
 };
