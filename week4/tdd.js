@@ -38,11 +38,6 @@ const firstNonRepeatingLetter = str => {
 };
 
 
-// Challenge: Ping Pong Pairing
-
-
-
-
 // Checking for understanding:
 // What is an automated test?
   // Automated testing differs from manual testing where a human being is responsible for single-handedly testing the functionality of the software in the way a user would. Because automated testing is done through an automation tool, less time is needed in exploratory tests and more time is needed in maintaining test scripts while increasing overall test coverage.
@@ -59,7 +54,7 @@ const firstNonRepeatingLetter = str => {
   // Users don't care for testing unless a feature is seriously broken
 
 // Where should your tests live in your project?
-  // In it's own directory along wit
+  // In it's own directory along with all it's other test friends
 
 // How do you run your tests?
   // One must write them.

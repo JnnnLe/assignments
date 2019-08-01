@@ -1,7 +1,7 @@
 // Challenge 1: Define a function called metersToInches that takes an input of the number of meters and outputs the result of the number of inches.
 // 1 meter equals 39.3701 inches.
 
-// Time Complexity: (O)1 Constant 
+// Time Complexity: O(1) Constant 
 
 const metersToInches = m => {
   return `${m} meters is equal to ${m * 39.3701} inches`;
@@ -13,7 +13,7 @@ const metersToInches = m => {
 Write a function named loopThrough that takes an argument that is a number and loops through and displays a message “Hello World” that number of times.
 */
 
-// Time Complexity: (O)n Linear 
+// Time Complexity: O(n) Linear 
 
 const loopThrough = n => {
   for (let i = 0; i < n; i++) {
@@ -27,7 +27,7 @@ const loopThrough = n => {
 Define a method called calculateSum to calculate the sum all the digits from 0 to an input number.
 */
 
-// Time Complexity: (O)n Linear
+// Time Complexity: O(n) Linear
 
 const calculateSum = n => {
   let sum = 0;
@@ -49,7 +49,7 @@ For each multiple of 5, print "Buzz" instead of the number.
 For numbers which are multiples of both 3 and 5, print "FizzBuzz" instead of the number.
 */
 
-// Time Complexity: (O)n Linear
+// Time Complexity: O(n) Linear
 
 const fizzBuzz = n => {
   if (n === 0) return;
@@ -72,7 +72,7 @@ const fizzBuzz = n => {
 A factorial number is the concept in math by value of multiplying numbers by each consecutively smaller number.
 */
 
-// Time Complexity: (O)n
+// Time Complexity: O(n)
 
 const factorial = n => {
   let sum = 1;
@@ -119,7 +119,7 @@ const sleep_in = (day, vacation) => {
 Write a function called common(a, b) with these criteria: Given 2 arrays of ints, a and b, return True if they have the same first element or they have the same last element. Both arrays will be length 1 or more.
 */
 
-// Time Complexity: (O)1 Constant
+// Time Complexity: O(1) Constant
 
 const common = (a, b) => {
   if (a[0] === b[0]) return `True`;
@@ -179,7 +179,7 @@ let family = [
   }
 ];
 
-// Time Complexity: (O)n Linear
+// Time Complexity: O(n) Linear
 
 const print2ndValue = arrOfObjs => {
   for (let i = 0; i < arrOfObjs.length; i++) {
