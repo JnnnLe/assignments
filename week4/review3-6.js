@@ -72,7 +72,7 @@ const fizzBuzz = n => {
 A factorial number is the concept in math by value of multiplying numbers by each consecutively smaller number.
 */
 
-// Time Complexity: O(C ^ n)
+// Time Complexity: O(n)
 
 const factorial = n => {
   let sum = 1;
@@ -89,7 +89,7 @@ const factorial = n => {
 Using a switch statement, write a function called sleep_in(weekday, vacation) with these criteria: The parameter weekday is True if it is a weekday, and the parameter vacation is True if we are on vacation. We sleep in if it is not a weekday or we're on vacation. Return True if we sleep in.
 */
 
-// Time Complexity: (0)1 Constant Time?
+// Time Complexity: (0)1 Constant Time
 
 const sleep_in = (day, vacation) => {
 
