@@ -13,5 +13,5 @@ HTTP 200 OK
 */
 
 // in terminal run
-curl https://api.nasa.gov/planetary/apod?api_key=SiK50ubdPhayc8iB6GwV52kLOj47LrZ2ocWai8Qf
+// curl https://api.nasa.gov/planetary/apod?api_key=SiK50ubdPhayc8iB6GwV52kLOj47LrZ2ocWai8Qf
 // recieved same GET request body
