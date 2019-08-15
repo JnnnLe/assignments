@@ -1,0 +1,17 @@
+Objectives
+Participants will be able to:
+
+✅ Set up their own Twilio Phone Number
+✅ Send a text message to your phone from the Twilio Console
+Create a TwiML Bin that greets a voice caller
+Generate TwiML with Twilio Functions to respond to SMS messages with a random fact about dogs
+✅Set up NGROK for local development
+
+
+Specific Things To Teach
+✅Learn how to use the API explorer for Twilio APIs.
+✅Create a POST request using JSON and look at the Response.
+✅Create a TWIML Bin. Host some TwiML with Twilio without having to set up a server.
+Create a TwiML Bin that greets a voice caller. Configure your Twilio voice phone number to answer voice calls with that TwiML Bin.
+✅Twilio Functions - Write your own Node.js code using Twilio Functions.
+✅Set up NGROK for local development.
