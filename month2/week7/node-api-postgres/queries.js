@@ -27,3 +27,15 @@ const getUserById = (request, response) => {
     response.status(200).json(results.rows);
   })
 };
+
+// POST new user
+const createUser = (request, response) => {
+  const { name, email } = request.body;
+
+  pool.query('INSERT INTO users (name, email) values ($1, $2)', [name, email], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send(`User added with id: ${results.insertId}`);
+  })
+};
