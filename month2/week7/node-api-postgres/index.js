@@ -17,26 +17,11 @@ app.get('/', (request, response) => {
 });
 
 // creating all the routes for CRUD application
-app.get('/users', (request, response) => {
-
-});
-
-app.get('/users/:id', (request, response) => {
-
-});
-
-app.post('users', (request, response) => {
-
-});
-
-app.put('/users/:id', (request, response) => {
-
-});
-
-app.delete('/users/:id', (request, response) => {
-
-});
-
+app.get('/users', db.getUsers);
+app.get('/users/:id', db.getUserById);
+app.post('/users', db.createUser);
+app.put('/users/:id', db.updateUser);
+app.delete('/users/:id', db.deleteUser);
 
 // app listen on port 3000
 app.listen(port, () => {
