@@ -10,11 +10,12 @@ app.use(
   })
 );
 
+// route for a GET req on the root /url and return some json
 app.get('/', (request, response) => {
   response.json({ info: 'Node.js, Express, and Postgres API' })
 });
 
-// listen app
+// app listen on port 3000
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 });
