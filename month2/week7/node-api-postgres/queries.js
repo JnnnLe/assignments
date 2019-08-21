@@ -1,4 +1,4 @@
-// set up the configuration of oyur PostgreSQL connection
+// set up the configuration of your PostgreSQL connection
 const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'me',
