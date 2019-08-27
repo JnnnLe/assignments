@@ -1,13 +1,12 @@
 //require packages
-const pg = require("pg");
-const pgKey = require('./keys').pg;
-
- //create PostgreSQL connection
-const connection = pg.createConnection({
+require('dotenv').config();
+const Pool = require("pg").Pool;
+const connection = new Pool({
+  //create PostgreSQL connection
   host: "localhost",
-  port: 3306,
-  user: "root",
-  password: pgKey,
+  port: 5433,
+  user: "postgres",
+  password: process.env.DB_PASSWORD,
   database: "eventonica"
 });
 
