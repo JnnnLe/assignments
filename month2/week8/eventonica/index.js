@@ -5,13 +5,11 @@ const app = require('./app');
   connection.connect((err) =>{
     if (err) throw err;
 
-     console.log('Welcome to Eventonica')
-    console.log("connected as Administrator");
+    console.log('Welcome to Eventonica')
+    console.log('connected as Administrator');
 
-     app.startQuestion(()=>{ connection.end() });
+    app.startQuestion(() => { connection.end() });
   })
 }
 
- // *Uncomment below line once you have mySQL setup
-
- pgConnect();
+pgConnect();
