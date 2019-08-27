@@ -10,4 +10,4 @@ const connection = new Pool({
   database: "eventonica"
 });
 
- module.exports = connection;
+module.exports = connection;
