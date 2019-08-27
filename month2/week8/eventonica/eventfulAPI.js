@@ -1,4 +1,4 @@
-const eventfulKey = require("./keys.js").eventful;
+const eventfulKey = process.env.EVENTFUL_API_KEY;
 const eventful = require('eventful-node');
 const client = new eventful.Client(eventfulKey);
 
@@ -9,7 +9,7 @@ client.searchEvents({
   date: "Next Week"
 }, function(err, data){
    if(err){
-     return console.error(err);
+    return console.error(err);
    }
    let resultEvents = data.search.events.event;
    console.log('Received ' + data.search.total_items + ' events');
