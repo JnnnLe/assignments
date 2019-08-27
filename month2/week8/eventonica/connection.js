@@ -1,4 +1,4 @@
-//require packages
+//require packages for .env password and connection
 require('dotenv').config();
 const Pool = require("pg").Pool;
 const connection = new Pool({
