@@ -2,22 +2,22 @@ const inquirer = require('inquirer');
 //connection available to all
 const connection = require('./connection');
 
- const app = {};
+  const app = {};
 
- app.startQuestion = (closeConnectionCallback) => {
-  inquirer.prompt({
-    type: 'list',
-    message: 'What action would you like to do?',
-    choices: [
-      'Complete a sentence',
-      'Create a new user',
-      'Find one event of a particular type in San Francisco next week',
-      'Mark an existing user to attend an event in database',
-      'See all events that a particular user is going to',
-      'See all the users that are going to a particular event',
-      'Exit'
-    ],
-    name:'action',
+  app.startQuestion = (closeConnectionCallback) => {
+    inquirer.prompt({
+      type: 'list',
+      message: 'What action would you like to do?',
+      choices: [
+        'Complete a sentence',
+        'Create a new user',
+        'Find one event of a particular type in San Francisco next week',
+        'Mark an existing user to attend an event in database',
+        'See all events that a particular user is going to',
+        'See all the users that are going to a particular event',
+        'Exit'
+      ],
+      name:'action',
   }).then((res) => {
     const continueCallback = () => app.startQuestion(closeConnectionCallback);
 
@@ -46,52 +46,52 @@ const connection = require('./connection');
   })
 };
 
- app.completeSentence = (continueCallback) => {
+app.completeSentence = (continueCallback) => {
   //YOUR WORK HERE
-  console.log('Please write code for this function');
+  console.log('1. Please write code for this function');
   //End of your work
   continueCallback();
 };
 
- app.createNewUser = (continueCallback) => {
+app.createNewUser = (continueCallback) => {
   //YOUR WORK HERE
 
-  console.log('Please write code for this function');
+  console.log('2. Please write code for this function');
   //End of your work
   continueCallback();
 
  };
 
- app.searchEventful = (continueCallback) => {
+app.searchEventful = (continueCallback) => {
   //YOUR WORK HERE
 
-  console.log('Please write code for this function');
+  console.log('3. Please write code for this function');
   //End of your work
   continueCallback();
 };
 
- app.matchUserWithEvent = (continueCallback) => {
+app.matchUserWithEvent = (continueCallback) => {
   //YOUR WORK HERE
 
-  console.log('Please write code for this function');
+  console.log('4. Please write code for this function');
   //End of your work
   continueCallback();
 };
 
- app.seeEventsOfOneUser = (continueCallback) => {
+app.seeEventsOfOneUser = (continueCallback) => {
   //YOUR WORK HERE
 
-  console.log('Please write code for this function');
+  console.log('5. Please write code for this function');
   //End of your work
   continueCallback();
 };
 
- app.seeUsersOfOneEvent = (continueCallback) => {
+app.seeUsersOfOneEvent = (continueCallback) => {
   //YOUR WORK HERE
 
-  console.log('Please write code for this function');
+  console.log('6. Please write code for this function');
   //End of your work
   continueCallback();
-};
+};  
 
- module.exports = app;
+module.exports = app;
