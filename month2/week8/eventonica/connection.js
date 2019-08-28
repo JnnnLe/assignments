@@ -4,8 +4,8 @@ const Pool = require("pg").Pool;
 const connection = new Pool({
   //create PostgreSQL connection
   host: "localhost",
-  port: 5433,
-  user: "postgres",
+  port: 5432,
+  user: "jenn",
   password: process.env.DB_PASSWORD,
   database: "eventonica"
 });
