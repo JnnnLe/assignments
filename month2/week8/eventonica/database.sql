@@ -11,6 +11,7 @@ CREATE TABLE users (
   location VARCHAR(40) NOT NULL
 );
 
+-- dummy data
 -- no need to input user_id, auto generate 
 INSERT INTO users (name, events_attending, location)
 VALUES ('Maximilien Lê Jowett', 'Bon Iver', 'San Francisco');
