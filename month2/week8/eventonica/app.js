@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const { prompt } = require('enquirer');
 //connection available to all
 const connection = require('./connection');
 
@@ -54,12 +55,28 @@ app.completeSentence = (continueCallback) => {
 };
 
 app.createNewUser = (continueCallback) => {
-  //YOUR WORK HERE
+  const response = prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    },
+    {
+      type: 'input',
+      name: 'location',
+      message: 'What is your location?'
+    }
+  ]).then( answer => {
+    //update in database
+    connection.query('INSERT INTO users (name, location) VALUES ($1, $2)', [answer.name, answer.location], (error, results) => {
+      if (error) {
+        throw error
+      }
+      console.log('User added with name: ', answer.name);
+    })
+  });
 
-  console.log('2. Please write code for this function');
-  //End of your work
   continueCallback();
-
  };
 
 app.searchEventful = (continueCallback) => {
