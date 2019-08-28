@@ -1,5 +1,4 @@
 const inquirer = require('inquirer');
-// const { prompt } = require('enquirer');
 const axios = require('axios');
 //connection available to all
 const connection = require('./connection');
@@ -96,7 +95,7 @@ app.searchEventful = (continueCallback) => {
    .then(function (answer) {
       axios.get("https://sanfrancisco.eventful.com/events?q=" + answer.query)
         .then((response) => {
-          
+
           // formats data from API
           client.searchEvents({
             keywords: 'tango',
