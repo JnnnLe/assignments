@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
-const { prompt } = require('enquirer');
+// const { prompt } = require('enquirer');
+const axios = require('axios');
 //connection available to all
 const connection = require('./connection');
 
@@ -55,7 +56,7 @@ app.completeSentence = (continueCallback) => {
 };
 
 app.createNewUser = (continueCallback) => {
-  const response = prompt([
+  inquirer.prompt([
     {
       type: 'input',
       name: 'name',
@@ -80,10 +81,23 @@ app.createNewUser = (continueCallback) => {
  };
 
 app.searchEventful = (continueCallback) => {
-  //YOUR WORK HERE
+  inquirer.prompt([
+    {
+      type: "text",
+      name: "query",
+      message: "What would you like to do or who would you like to see?",
+    }
+  ])
+   .then(function (answer) {
+      axios.get("https://sanfrancisco.eventful.com/events?q=" + answer.query)
+        .then((response) => {
+          console.log('This is the res:', response);  
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    })
 
-  console.log('3. Please write code for this function');
-  //End of your work
   continueCallback();
 };
 
