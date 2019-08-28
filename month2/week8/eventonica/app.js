@@ -4,6 +4,11 @@ const axios = require('axios');
 //connection available to all
 const connection = require('./connection');
 
+//for the display of data
+const eventfulKey = process.env.EVENTFUL_API_KEY;
+const eventful = require('eventful-node');
+const client = new eventful.Client(eventfulKey);
+
   const app = {};
 
   app.startQuestion = (closeConnectionCallback) => {
@@ -91,7 +96,28 @@ app.searchEventful = (continueCallback) => {
    .then(function (answer) {
       axios.get("https://sanfrancisco.eventful.com/events?q=" + answer.query)
         .then((response) => {
-          console.log('This is the res:', response);  
+          
+          // formats data from API
+          client.searchEvents({
+            keywords: 'tango',
+            location: 'San Francisco',
+            date: "Next Week"
+          }, (err, data) => {
+            if (err) {
+              return console.error(err);
+            }
+            let resultEvents = data.search.events.event;
+            console.log('Received ' + data.search.total_items + ' events');
+            console.log('Event listings: ');
+
+            for ( let i =0 ; i < resultEvents.length; i++) {
+              console.log("===========================================================")
+              console.log('title: ',resultEvents[i].title);
+              console.log('start_time: ',resultEvents[i].start_time);
+              console.log('venue_name: ',resultEvents[i].venue_name);
+              console.log('venue_address: ',resultEvents[i].venue_address);
+            }
+          });
         })
         .catch(function (error) {
           console.log(error);
