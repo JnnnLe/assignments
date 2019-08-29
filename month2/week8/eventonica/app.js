@@ -46,7 +46,7 @@ app.startQuestion = (closeConnectionCallback) => {
     app.seeUsersOfOneEvent(continueCallback);
   }
   if (res.action === 'Exit') {
-    closeConnectionCallback();
+    app.quit();
     return;
   }
 })
@@ -176,7 +176,7 @@ app.seeEventsOfOneUser = async (continueCallback) => {
       '\n', '===========================================================', '\n',
       userName, 'is planning to attend', results.rows[0].events_attending, '\n',
       '===========================================================', '\n'
-      );
+    );
     continueCallback();
   });
 };
@@ -188,5 +188,10 @@ app.seeUsersOfOneEvent = (continueCallback) => {
   //End of your work
   continueCallback();
 };  
+
+app.quit = () => {
+  console.log('GOODBYE!!');
+  process.exit(1);
+}
 
 module.exports = app;
