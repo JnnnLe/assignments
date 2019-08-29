@@ -85,54 +85,69 @@ app.createNewUser = (continueCallback) => {
     }, 2000)
   });
 
-  // continueCallback();
  };
 
-app.searchEventful = (continueCallback) => {
-  inquirer.prompt([
+app.searchEventful = async (continueCallback) => {
+  let userResults = {};
+  const { query } = await inquirer.prompt([
     {
       type: "text",
       name: "query",
       message: "What would you like to do or who would you like to see?",
     }
-  ])
-   .then(function (answer) {
-      axios.get("https://sanfrancisco.eventful.com/events?q=" + answer.query)
-        .then((response) => {
+  ]);
 
-          // formats data from API
-          client.searchEvents({
-            keywords: answer.query,
-            location: 'San Francisco',
-            date: "Next Week"
-          }, (err, data) => {
-            if (err) {
-              return console.error(err);
-            }
-            let resultEvents = data.search.events.event;
-            console.log('Received ' + data.search.total_items + ' events');
-            console.log('Event listings: ');
+  // formats data from API, Inquirer Api call (native to API)
+  client.searchEvents({
+    keywords: query,
+    location: 'San Francisco',
+    date: "Next Week"
+  }, async (err, data) => {
+    if (err) {
+      return console.error(err);
+    }
+    let resultEvents = data.search.events.event;
+    console.log('Received ' + data.search.total_items + ' events');
+    console.log('Event listings: ');
+    console.log("===========================================================")
+    console.log('title: ',resultEvents[0].title);
+    console.log('date: ',resultEvents[0].start_time);
+    console.log('location: ',resultEvents[0].venue_name);
+    console.log('address: ',resultEvents[0].venue_address);
 
-            // for ( let i =0 ; i < resultEvents.length; i++) {
-              console.log("===========================================================")
-              console.log('title: ',resultEvents[0].title);
-              console.log('start_time: ',resultEvents[0].start_time);
-              console.log('venue_name: ',resultEvents[0].venue_name);
-              console.log('venue_address: ',resultEvents[0].venue_address);
-            // }
-          })   
-        }).then( () => {
-          setTimeout(() => {
-          continueCallback()
-          }, 2000)
-        }).catch(function (error) {
-          console.log(error);
-        });
-    })
+    userResults.host_name = resultEvents[0].title;
+    userResults.date = resultEvents[0].start_time.slice(0,10);
+    userResults.location = `${resultEvents[0].venue_name} - ${resultEvents[0].venue_address}`;
+
+    const { addEventQuestion } = await inquirer.prompt([
+      {
+        type: "text",
+        name: "addEventQuestion",
+        message: "Would you add this event to your list?",
+      }
+    ]);
+    
+    if (addEventQuestion == 'yes' || addEventQuestion == 'y') {
+      const { name } = await inquirer.prompt([
+        {
+          type: "text",
+          name: "name",
+          message: "What is your name?",
+        }
+      ]);
+      
+      //update in database
+      connection.query('UPDATE users SET events_attending = $1 WHERE name= $2', [userResults.host_name, name], (error, results) => {
+        if (error) {
+          throw error;
+        }
+        console.log('Event added ', userResults.host_name, ' to ', name);
+      });
+    } 
+  });
 };
 
 app.matchUserWithEvent = (continueCallback) => {
-  //YOUR WORK HERE
 
   console.log('4. Please write code for this function');
   //End of your work
