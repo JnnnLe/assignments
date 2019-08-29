@@ -152,18 +152,33 @@ app.searchEventful = async (continueCallback) => {
 };
 
 app.matchUserWithEvent = (continueCallback) => {
-
-  console.log('4. Please write code for this function');
-  //End of your work
-  continueCallback();
-};
-
-app.seeEventsOfOneUser = (continueCallback) => {
-  //YOUR WORK HERE
-
   console.log('5. Please write code for this function');
   //End of your work
   continueCallback();
+  
+  
+};
+
+app.seeEventsOfOneUser = async (continueCallback) => {
+  const { userName } = await inquirer.prompt([
+    {
+      type: "text",
+      name: "userName",
+      message: "Who is the user you would like to connect to?"
+    }
+  ]);
+  
+  connection.query('SELECT * FROM users WHERE name = $1', [userName], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    console.log(
+      '\n', '===========================================================', '\n',
+      userName, 'is planning to attend', results.rows[0].events_attending, '\n',
+      '===========================================================', '\n'
+      );
+    continueCallback();
+  });
 };
 
 app.seeUsersOfOneEvent = (continueCallback) => {
