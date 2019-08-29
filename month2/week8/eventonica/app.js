@@ -113,13 +113,13 @@ app.searchEventful = (continueCallback) => {
             console.log('Received ' + data.search.total_items + ' events');
             console.log('Event listings: ');
 
-            for ( let i =0 ; i < resultEvents.length; i++) {
+            // for ( let i =0 ; i < resultEvents.length; i++) {
               console.log("===========================================================")
-              console.log('title: ',resultEvents[i].title);
-              console.log('start_time: ',resultEvents[i].start_time);
-              console.log('venue_name: ',resultEvents[i].venue_name);
-              console.log('venue_address: ',resultEvents[i].venue_address);
-            }
+              console.log('title: ',resultEvents[0].title);
+              console.log('start_time: ',resultEvents[0].start_time);
+              console.log('venue_name: ',resultEvents[0].venue_name);
+              console.log('venue_address: ',resultEvents[0].venue_address);
+            // }
           })   
         }).then( () => {
           setTimeout(() => {
