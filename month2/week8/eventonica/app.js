@@ -142,8 +142,12 @@ app.searchEventful = async (continueCallback) => {
           throw error;
         }
         console.log('Event added ', userResults.host_name, ' to ', name);
+        //last fn to execute
+        continueCallback();
       });
-    } 
+    } else {
+      continueCallback();
+    }
   });
 };
 
