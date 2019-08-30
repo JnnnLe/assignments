@@ -59,8 +59,8 @@ app.completeSentence = (continueCallback) => {
   continueCallback();
 };
 
-app.createNewUser = (continueCallback) => {
-  inquirer.prompt([
+app.createNewUser = async (continueCallback) => {
+  const { name, location } = await inquirer.prompt([
     {
       type: 'input',
       name: 'name',
@@ -71,20 +71,20 @@ app.createNewUser = (continueCallback) => {
       name: 'location',
       message: 'What is your location?'
     }
-  ]).then( answer => {
-    //update in database
-    connection.query('INSERT INTO users (name, location) VALUES ($1, $2)', [answer.name, answer.location], (error, results) => {
-      if (error) {
-        throw error
-      }
-      console.log('User added with name: ', answer.name);
-    })
-  }).then( () => {
-      setTimeout(() => {
-      continueCallback()
-    }, 2000)
-  });
+  ]);
 
+  //update in database
+  connection.query('INSERT INTO users (name, location) VALUES ($1, $2)', [name, location], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    console.log(
+      '\n', '===========================================================', '\n',
+      'User added with name ', name, '\n',
+      '===========================================================', '\n'
+    );
+    continueCallback();
+  });
  };
 
 app.searchEventful = async (continueCallback) => {
