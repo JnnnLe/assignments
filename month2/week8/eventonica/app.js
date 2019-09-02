@@ -33,11 +33,8 @@ app.startQuestion = (closeConnectionCallback) => {
   if (res.action === 'Create a new user') {
     app.createNewUser(continueCallback);
   }
-  if (res.action === 'Find one event of a particular type in San Francisco next week') {
+  if (res.action === 'Find a event in San Francisco next week') {
     app.searchEventful(continueCallback);
-  }
-  if (res.action === 'Mark an existing user to attend an event in database') {
-    app.matchUserWithEvent(continueCallback);
   }
   if (res.action === 'See all events that a particular user is going to') {
     app.seeEventsOfOneUser(continueCallback);
@@ -80,8 +77,8 @@ app.createNewUser = async (continueCallback) => {
     }
     console.log(
       '\n', '===========================================================', '\n',
-      'User added with name ', name, '\n',
-      '===========================================================', '\n'
+      'User added with name ', name, 
+      '\n', '===========================================================', '\n'
     );
     continueCallback();
   });
@@ -91,9 +88,9 @@ app.searchEventful = async (continueCallback) => {
   let userResults = {};
   const { query } = await inquirer.prompt([
     {
-      type: "text",
-      name: "query",
-      message: "What would you like to do or who would you like to see?",
+      type: 'text',
+      name: 'query',
+      message: 'What would you like to do or who would you like to see?',
     }
   ]);
 
@@ -101,15 +98,16 @@ app.searchEventful = async (continueCallback) => {
   client.searchEvents({
     keywords: query,
     location: 'San Francisco',
-    date: "Next Week"
+    date: 'Next Week'
   }, async (err, data) => {
+    console.log('Pickle Nic');
     if (err) {
       return console.error(err);
     }
     let resultEvents = data.search.events.event;
     console.log('Received ' + data.search.total_items + ' events');
     console.log('Event listings: ');
-    console.log("===========================================================")
+    console.log('===========================================================')
     console.log('title: ',resultEvents[0].title);
     console.log('date: ',resultEvents[0].start_time);
     console.log('location: ',resultEvents[0].venue_name);
@@ -121,18 +119,18 @@ app.searchEventful = async (continueCallback) => {
 
     const { addEventQuestion } = await inquirer.prompt([
       {
-        type: "text",
-        name: "addEventQuestion",
-        message: "Would you add this event to your list?",
+        type: 'text',
+        name: 'addEventQuestion',
+        message: 'Would you add this event to your list?',
       }
     ]);
     
     if (addEventQuestion == 'yes' || addEventQuestion == 'y') {
       const { name } = await inquirer.prompt([
         {
-          type: "text",
-          name: "name",
-          message: "What is your name?",
+          type: 'text',
+          name: 'name',
+          message: 'What is your name?',
         }
       ]);
       
@@ -151,20 +149,12 @@ app.searchEventful = async (continueCallback) => {
   });
 };
 
-app.matchUserWithEvent = (continueCallback) => {
-  console.log('5. Please write code for this function');
-  //End of your work
-  continueCallback();
-  
-  
-};
-
 app.seeEventsOfOneUser = async (continueCallback) => {
   const { userName } = await inquirer.prompt([
     {
-      type: "text",
-      name: "userName",
-      message: "Who is the user you would like to connect to?"
+      type: 'text',
+      name: 'userName',
+      message: 'Who is the user you would like to connect to?'
     }
   ]);
   
@@ -181,12 +171,26 @@ app.seeEventsOfOneUser = async (continueCallback) => {
   });
 };
 
-app.seeUsersOfOneEvent = (continueCallback) => {
-  //YOUR WORK HERE
+app.seeUsersOfOneEvent = async (continueCallback) => {
+  const { seeAttendees } = await inquirer.prompt([
+    {
+      type: 'text',
+      name: 'seeAttendees',
+      message: 'Which event\'s guest list would you like to see?'
+    }
+  ]);
 
-  console.log('6. Please write code for this function');
-  //End of your work
-  continueCallback();
+  connection.query(
+    'SELECT name FROM users INNER JOIN events ON users.events_attending = events.host_name WHERE users.events_attending = $1', [seeAttendees], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    console.log(
+      '\n', '===========================================================', '\n',
+      results
+    )
+  });
+  
 };  
 
 app.quit = () => {

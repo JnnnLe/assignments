@@ -31,22 +31,23 @@ class App extends React.Component {
   };
 
   displayConcerts = () => {
-    return this.state.data.map(concert => {
-      return (
-        <ConcertCard concert={concert}/>
-      )
-    })
+    return this.state.data.map(concert => <ConcertCard concert={concert}/>)
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Eventonica</h1>
-        <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleOnChange} />
-        </form>
-        {this.state.data !== null && this.displayConcerts()}
-        <AddUser />
+      <div class="container">
+      <h1>Eventonica</h1>
+      <form onSubmit={this.handleSubmit}>
+      <input onChange={this.handleOnChange} />
+      </form>
+      </div>
+        <div className="container">
+        <div className="concerts">
+          {this.state.data !== null && this.displayConcerts()}
+        </div>
+        </div>
       </div>
     );
   }

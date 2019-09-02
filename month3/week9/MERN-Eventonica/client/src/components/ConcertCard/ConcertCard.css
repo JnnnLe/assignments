@@ -1,0 +1,7 @@
+.card {
+  margin: 0 auto;
+  border: 1px dotted #999;
+  border-radius: 8px;
+  margin: 16px;
+  padding: 16px;
+}

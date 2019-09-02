@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './ConcertCard.css';
 
 const ConcertCard = (props) => {
-
   const formatDate = (str) => {
     // format date
     let date = str.slice(0, 10);
@@ -21,11 +20,13 @@ const ConcertCard = (props) => {
     return `${date} @${time}`
   }
 
+  console.log('HERE:', props);
  return (
-  <div>
-    <h3>{props.concert.lineup[props.concert.lineup.length - 1]} - {formatDate(props.concert.datetime)}</h3>
+  <div className="card">
+    <h3>{props.concert.lineup[props.concert.lineup.length - 1]}</h3>
+    <h3>{formatDate(props.concert.datetime)}</h3>
     <h4>{props.concert.venue.name}</h4>
-    <h4>{props.concert.venue.city}</h4>
+    <h4>{props.concert.venue.city}, {props.concert.venue.region || props.concert.venue.country}</h4>
   </div>
  )
 }
