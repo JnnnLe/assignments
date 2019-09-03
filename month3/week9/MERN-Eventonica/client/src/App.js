@@ -24,29 +24,32 @@ class App extends React.Component {
     axios.get(URL)
     .then(res => {
       const { data, status } = res;
-      if (status == 200) {
+      if (status == 200 && data !== `↵{warn=Not found}↵`) {
         this.setState({ data });
       }
+    })
+    .catch(err => {
+      console.log('STATE:', this.state);
+      alert(`Error, we could not find that artist. Please try again.`)
     })
   };
 
   displayConcerts = () => {
+    if (this.state.data == null || this.state.data == [] || this.state.data == `↵{warn=Not found}↵`) return;
     return this.state.data.map(concert => <ConcertCard concert={concert}/>)
   }
 
   render() {
     return (
       <div className="App">
-      <div class="container">
-      <h1>Eventonica</h1>
-      <form onSubmit={this.handleSubmit}>
-      <input onChange={this.handleOnChange} />
-      </form>
-      </div>
+        <h1>Eventonica</h1>
+        <form onSubmit={this.handleSubmit}>
+        <input id="search" onChange={this.handleOnChange} />
+        </form>
         <div className="container">
-        <div className="concerts">
-          {this.state.data !== null && this.displayConcerts()}
-        </div>
+          <div className="concerts">
+            {this.state.data !== null && this.displayConcerts()}
+          </div>
         </div>
       </div>
     );
