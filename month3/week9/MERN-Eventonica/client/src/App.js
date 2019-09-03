@@ -29,7 +29,6 @@ class App extends React.Component {
       }
     })
     .catch(err => {
-      console.log('STATE:', this.state);
       alert(`Error, we could not find that artist. Please try again.`)
     })
   };
