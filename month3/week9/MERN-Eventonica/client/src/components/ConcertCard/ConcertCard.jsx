@@ -20,7 +20,6 @@ const ConcertCard = (props) => {
     return `${date} @${time}`
   }
 
-  console.log('HERE:', props);
  return (
   <div className="card">
     <h3>{props.concert.lineup[props.concert.lineup.length - 1]}</h3>
