@@ -18,9 +18,29 @@ client.connect(err => {
 });
 
 const Concert = require(`./models/Concert`);
+const User = require(`./models/User`);
 
 app.use(bodyParser());
 
+// home
+app.get('/', (req, res) => {
+  res.redirect('http://localhost:3000');
+});
+
+// add new user to db
+app.post('/api/addUser', (req, res) => {
+  const { user_name } = req.body;
+  let newUser = new User({
+    user_name
+  })
+  newUser.save((err) => {
+    if (err) return handleError(err);
+  })
+  res.send(`Saved new user: ${newUser.user_name}!`)
+});
+
+
+// add new concert to db
 app.post('/api/addConcert', (req, res) => {
   const { artist_name, date_time, location_name, location } = req.body;
   let newConcert = new Concert({
@@ -32,21 +52,23 @@ app.post('/api/addConcert', (req, res) => {
   newConcert.save((err) => {
     if (err) return handleError(err);
   })
-  res.send('Saved new concert!')
-})
-
-app.get('/', (req, res) => {
-  res.redirect('http://localhost:3000');
+  res.send(`Saved new concert: ${newConcert.artist_name}!`)
 });
 
-app.get('/api/concert', (req, res) => {
+// find user in db
+
+
+
+// find concert in db by given id
+app.get('/api/findConcert', (req, res) => {
   Concert.find({}, (err, concerts) => {
-    res.json(concerts)
+    console.log('Return all concerts')
+    res.json(concerts);
   })
 });
 
 
-// express  server
+// express server
 app.listen(PORT, () => {
   console.log(`App is listening on ${PORT}.`)
 });
