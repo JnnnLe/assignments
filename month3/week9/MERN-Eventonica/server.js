@@ -1,22 +1,51 @@
 const express = require('express');
 const axios = require('axios');
-require('dotenv').config()
 const mongoose = require('mongoose');
-mongoose.connect();
 
 const app = express();
 const PORT = 8080;
+require('dotenv').config();
 
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-hw6jk.mongodb.net/test?retryWrites=true&w=majority`, {useNewUrlParser: true});
+const MongoClient = require('mongodb').MongoClient;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-hw6jk.mongodb.net/test?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  console.log('Open connection to MongoDB!')
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB using mongoose');
-})
+// const Concert = require(`./models/Concert`);
 
+// app.post('/api/add', (req, res) => {
+//   const { artistName,date_time,location_name,location } = req.body;
+//   let newStudent = new Concert({
+//     artistName,
+//     date_time,
+//     location_name,
+//     location
+//   })
+//   newConcert.save((err) => {
+//     if (err) return handleError(err);
+//   })
+//   res.send('Saved new concert!')
+// })
+
+// app.get('/', (req, res) => {
+//   res.redirect('http://localhost:3000');
+// });
+
+// app.get('/api/concerts', (req, res) => {
+//   Concert.find({}, (err, concerts) => {
+//     res.json(concerts)
+//   })
+// });
+
+
+// express  server
 app.listen(PORT, () => {
-  console.log(`App is listening on ${PORT}!`)
+  console.log(`App is listening on ${PORT}.`)
 });
 
 
