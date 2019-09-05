@@ -7,7 +7,7 @@ require('dotenv').config();
 
 class App extends React.Component {
   state = {
-    input: '',
+    input:``,
     data: null
   };
 
