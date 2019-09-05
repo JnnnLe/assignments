@@ -40,8 +40,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Eventonica - MERN</h1>
-        <form onSubmit={this.handleSubmit}>
-        <input id="search" onChange={this.handleOnChange} />
+        <form onSubmit={this.handleSubmit}> 
+        <input id="search" onChange={this.handleOnChange} placeholder="Search for a concert here"/>
         </form>
         <div className="container">
           <div className="concerts">

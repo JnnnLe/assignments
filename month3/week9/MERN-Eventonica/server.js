@@ -73,7 +73,6 @@ app.get(`/api/findUser/:_id`, (req, res) => {
   })
 });
 
-
 // find concert in db by given id
 app.get(`/api/findConcert/:_id`, (req, res) => {
   const { _id } = req.params;
@@ -102,6 +101,7 @@ app.delete(`/api/deleteConcert/:_id`, (req, res) => {
 });
 
 // Search all of the concerts a specific user is attending
+// TODO: implement add event to user UI 
 
 // Search all of the users going to a specific concert
 
