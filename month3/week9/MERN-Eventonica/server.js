@@ -70,7 +70,7 @@ app.get(`/api/allConcerts`, (req, res) => {
 });
 
 // find user in db by given id
-app.get(`/api/users/:_id`, (req, res) => {
+app.get(`/api/findUser/:_id`, (req, res) => {
   const { _id } = req.params;
   // TODO: find user by id
   User.find({_id: _id}, (err, users) => {
