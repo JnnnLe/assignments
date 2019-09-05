@@ -53,6 +53,22 @@ app.post(`/api/addConcert`, (req, res) => {
   res.send(`Saved new concert: ${newConcert,artist_name}!`)
 });
 
+// find all users
+app.get(`/api/allUsers`, (req, res) => {
+  User.find({}, (err, users) => {
+    if (err) throw err;
+    res.send(users);
+  })
+});
+
+// find all concert
+app.get(`/api/allConcerts`, (req, res) => {
+  Concert.find({}, (err, users) => {
+    if (err) throw err;
+    res.send(users);
+  })
+});
+
 // find user in db by given id
 app.get(`/api/users/:user_name`, (req, res) => {
   const { id } = req.params;
