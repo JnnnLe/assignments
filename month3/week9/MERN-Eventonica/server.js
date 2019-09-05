@@ -2,11 +2,9 @@ require(`dotenv`).config();
 const express = require(`express`);
 const axios = require(`axios`);
 const mongoose = require(`mongoose`);
-// const bodyParser = require(`body-parser`);
 
 const app = express();
 const PORT = 8080;
-// app.use(bodyParser());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,9 +12,9 @@ app.use(express.json());
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-hw6jk.mongodb.net/test?retryWrites=true&w=majority
 `, {useNewUrlParser: true});
 const db = mongoose.connection;
-db.on(`error`, console.error.bind(console, `connection error:`));
+db.on(`error`, console.error.bind(console, `Connection error with MongoDB:`));
 db.once(`open`, () => {
-  console.log(`Connected!`)
+  console.log(`Connected to MongoDB!`)
 });
 
 const Concert = require(`./models/Concert`);
@@ -30,11 +28,11 @@ app.get(`/`, (req, res) => {
 // add new user to db
 app.post(`/api/addUser`, (req, res) => {
   const { user_name } = req.body;
-    User.create({user_name}, (err, response) => {
+  let newUser = new User({user_name});
+  newUser.save((err) => {
     if (err) return handleError(err);
-    console.log(response);
-    res.json(response);
   })
+  res.send(`Saved new user: ${newUser}`);
 });
 
 // add new concert to db
@@ -47,10 +45,7 @@ app.post(`/api/addConcert`, (req, res) => {
     location,
     attendees
   })
-  newConcert.save((err) => {
-    if (err) return handleError(err);
-  })
-  res.send(`Saved new concert: ${newConcert,artist_name}!`)
+  res.send(`Saved new concert: ${newConcert.artist_name}!`)
 });
 
 // find all users
@@ -89,6 +84,13 @@ app.get(`/api/findConcert/:_id`, (req, res) => {
 });
 
 // delete user in db given id
+app.delete(`/api/deleteUser/:_id`, (req, res) => {
+  const { _id } = req.params;
+  User.findOneAndDelete({_id: _id}, (err, users) => {
+    if (err) throw err;
+    res.send(`Deleted the user: ${users}`);
+  })
+});
 
 // delete concert in db given id
 
