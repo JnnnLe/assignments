@@ -16,31 +16,31 @@ client.connect(err => {
   client.close();
 });
 
-// const Concert = require(`./models/Concert`);
+const Concert = require(`./models/Concert`);
 
-// app.post('/api/add', (req, res) => {
-//   const { artistName,date_time,location_name,location } = req.body;
-//   let newStudent = new Concert({
-//     artistName,
-//     date_time,
-//     location_name,
-//     location
-//   })
-//   newConcert.save((err) => {
-//     if (err) return handleError(err);
-//   })
-//   res.send('Saved new concert!')
-// })
+app.post('/api/add', (req, res) => {
+  const { artistName, date_time, location_name, location } = req.body;
+  let newStudent = new Concert({
+    artistName,
+    date_time,
+    location_name,
+    location
+  })
+  newConcert.save((err) => {
+    if (err) return handleError(err);
+  })
+  res.send('Saved new concert!')
+})
 
-// app.get('/', (req, res) => {
-//   res.redirect('http://localhost:3000');
-// });
+app.get('/', (req, res) => {
+  res.redirect('http://localhost:3000');
+});
 
-// app.get('/api/concerts', (req, res) => {
-//   Concert.find({}, (err, concerts) => {
-//     res.json(concerts)
-//   })
-// });
+app.get('/api/concerts', (req, res) => {
+  Concert.find({}, (err, concerts) => {
+    res.json(concerts)
+  })
+});
 
 
 // express  server
