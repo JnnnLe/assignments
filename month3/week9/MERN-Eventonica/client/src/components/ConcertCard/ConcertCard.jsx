@@ -12,7 +12,7 @@ const ConcertCard = (props) => {
 
     // format time
     let time = str.slice(11, 16);
-    time = time.split(':')
+    time = time.split(`:`)
     let numericTime = parseInt(`${time[0]}.${time[1]}`);
     let temp = numericTime - 12;
     time = `${temp}PM`;
@@ -21,7 +21,7 @@ const ConcertCard = (props) => {
   }
 
  return (
-  <div className="card">
+  <div className='card'>
     <h3>{props.concert.lineup[props.concert.lineup.length - 1]}</h3>
     <h3>{formatDate(props.concert.datetime)}</h3>
     <h4>{props.concert.venue.name}</h4>
