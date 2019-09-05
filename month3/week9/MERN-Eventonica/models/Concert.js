@@ -10,6 +10,6 @@ const concertSchema = new Schema ({
   attendees: Array
 });
 
-const Concert = mongoose.model('Concert', concertSchema);
+const Concert = mongoose.model(`Concert`, concertSchema);
 
 module.exports = Concert;
