@@ -26,7 +26,6 @@ db.once(`open`, () => {
 
 const Concert = require(`./models/Concert`);
 const User = require(`./models/User`);
-const allUsers = [];
 
 // home
 app.get(`/`, (req, res) => {
@@ -41,7 +40,6 @@ app.post(`/api/addUser`, (req, res) => {
     if (err) return handleError(err);
   })
   // push new user to allUser array for prop
-  allUsers.push(newUser);
   res.send(`Saved new user: ${newUser}`);
 });
 
