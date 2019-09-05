@@ -93,6 +93,13 @@ app.delete(`/api/deleteUser/:_id`, (req, res) => {
 });
 
 // delete concert in db given id
+app.delete(`/api/deleteConcert/:_id`, (req, res) => {
+  const { _id } = req.params;
+  User.findOneAndDelete({_id: _id}, (err, concerts) => {
+    if (err) throw err;
+    res.send(`Deleted the user: ${concerts}`);
+  })
+});
 
 // Search all of the concerts a specific user is attending
 
