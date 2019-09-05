@@ -72,23 +72,19 @@ app.get(`/api/allConcerts`, (req, res) => {
 // find user in db by given id
 app.get(`/api/findUser/:_id`, (req, res) => {
   const { _id } = req.params;
-  // TODO: find user by id
   User.find({_id: _id}, (err, users) => {
     if (err) throw err;
-    console.log(`*****`, users);
-    res.send(`Found the user: ${users[0].user_name}`);
+    res.send(`Found the user: ${users[0]}`);
   })
 });
 
 
 // find concert in db by given id
-app.get(`/api/findConcert`, (req, res) => {
-  Concert.find({}, (err, concerts) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log(`Found stuff`)
-    res.json(concerts);
+app.get(`/api/findConcert/:_id`, (req, res) => {
+  const { _id } = req.params;
+  Concert.find({_id: _id}, (err, concerts) => {
+    if (err) throw err;
+    res.json(`Found concert: ${concerts[0]}`);
   })
 });
 
