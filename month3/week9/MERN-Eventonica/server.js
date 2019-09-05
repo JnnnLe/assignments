@@ -34,6 +34,7 @@ app.post('/api/add', (req, res) => {
 
 app.get('/', (req, res) => {
   res.redirect('http://localhost:3000');
+  console.log('root');
 });
 
 app.get('/api/concerts', (req, res) => {

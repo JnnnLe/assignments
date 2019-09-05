@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-
-import keys from './keys'
 import AddUser from './components/AddUser/AddUser';
-
 import ConcertCard from './components/ConcertCard/ConcertCard';
+require('dotenv').config();
 
 class App extends React.Component {
   state = {
@@ -20,7 +18,7 @@ class App extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const URL = `https://rest.bandsintown.com/artists/${this.state.input}/events?app_id=${keys.BANDSINTOWN_API_KEY}`
+    const URL = `https://rest.bandsintown.com/artists/${this.state.input}/events?app_id=${process.env.BANDSINTOWN_API_KEY}`
     axios.get(URL)
     .then(res => {
       const { data, status } = res;
@@ -41,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Eventonica</h1>
+        <h1>Eventonica - MERN</h1>
         <form onSubmit={this.handleSubmit}>
         <input id="search" onChange={this.handleOnChange} />
         </form>
