@@ -9,6 +9,13 @@ const PORT = 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// CORS fix
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-hw6jk.mongodb.net/test?retryWrites=true&w=majority
 `, {useNewUrlParser: true});
 const db = mongoose.connection;
@@ -19,6 +26,7 @@ db.once(`open`, () => {
 
 const Concert = require(`./models/Concert`);
 const User = require(`./models/User`);
+const allUsers = [];
 
 // home
 app.get(`/`, (req, res) => {
@@ -32,6 +40,8 @@ app.post(`/api/addUser`, (req, res) => {
   newUser.save((err) => {
     if (err) return handleError(err);
   })
+  // push new user to allUser array for prop
+  allUsers.push(newUser);
   res.send(`Saved new user: ${newUser}`);
 });
 
@@ -101,7 +111,7 @@ app.delete(`/api/deleteConcert/:_id`, (req, res) => {
 });
 
 // Search all of the concerts a specific user is attending
-// TODO: implement add event to user UI 
+// TODO: implement add event to user UI
 
 // Search all of the users going to a specific concert
 

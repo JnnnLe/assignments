@@ -17,7 +17,7 @@ const formatDate = (str) => {
   let temp = numericTime - 12;
   time = `${temp}PM`;
 
-  return `${date} @${time}`
+  return`${date} @${time}`
 };
 
 const ConcertCard = (props) => {
