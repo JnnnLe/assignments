@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 8080;
@@ -18,10 +19,12 @@ client.connect(err => {
 
 const Concert = require(`./models/Concert`);
 
-app.post('/api/add', (req, res) => {
-  const { artistName, date_time, location_name, location } = req.body;
-  let newStudent = new Concert({
-    artistName,
+app.use(bodyParser());
+
+app.post('/api/addConcert', (req, res) => {
+  const { artist_name, date_time, location_name, location } = req.body;
+  let newConcert = new Concert({
+    artist_name,
     date_time,
     location_name,
     location
@@ -34,10 +37,9 @@ app.post('/api/add', (req, res) => {
 
 app.get('/', (req, res) => {
   res.redirect('http://localhost:3000');
-  console.log('root');
 });
 
-app.get('/api/concerts', (req, res) => {
+app.get('/api/concert', (req, res) => {
   Concert.find({}, (err, concerts) => {
     res.json(concerts)
   })
