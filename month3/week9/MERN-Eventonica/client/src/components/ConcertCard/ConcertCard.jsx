@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Dropdown } from 'semantic-ui-react'
+// import { Dropdown } from 'semantic-ui-react'
 import './ConcertCard.css';
+// import DropdownExampleMultipleSearchSelection from './Dropdown';
 
 const formatDate = (str) => {
   // format date
@@ -27,7 +28,6 @@ const ConcertCard = (props) => {
     let clicked = props.concert.id; // found unique id for event
   // TODO: add event to user
     console.log(`Clicked: ${clicked}`);
-    console.log('All of the users: ', props)
   }
 
  return (
@@ -37,6 +37,7 @@ const ConcertCard = (props) => {
     <h4>{props.concert.venue.name}</h4>
     <h4>{props.concert.venue.city}, {props.concert.venue.region || props.concert.venue.country}</h4>
     <button id="add-event" onClick={ handleClick }> + </button>
+    
   </div>
  )
 }

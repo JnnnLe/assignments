@@ -64,7 +64,7 @@ app.get(`/api/allUsers`, (req, res) => {
   })
 });
 
-// find all concert
+// find all concert 
 app.get(`/api/allConcerts`, (req, res) => {
   Concert.find({}, (err, users) => {
     if (err) throw err;
