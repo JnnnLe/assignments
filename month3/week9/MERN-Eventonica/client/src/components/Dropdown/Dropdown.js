@@ -3,19 +3,19 @@ import './Dropdown.css';
 
 
 class Dropdown extends React.Component {
-constructor(){
- super();
+  constructor(){
+  super();
 
- this.state = {
-       displayMenu: false,
-     };
+  this.state = {
+        displayMenu: false,
+      };
 
-  this.showDropdownMenu = this.showDropdownMenu.bind(this);
-  this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
+    this.showDropdownMenu = this.showDropdownMenu.bind(this);
+    this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
 
-};
+  };
 
-showDropdownMenu(event) {
+  showDropdownMenu(event) {
     event.preventDefault();
     this.setState({ displayMenu: true }, () => {
     document.addEventListener('click', this.hideDropdownMenu);
