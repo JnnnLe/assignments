@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import { Dropdown } from 'semantic-ui-react'
 import './ConcertCard.css';
-// import DropdownExampleMultipleSearchSelection from './Dropdown';
+import Dropdown from '../Dropdown/Dropdown';
 
 const formatDate = (str) => {
   // format date
@@ -37,6 +36,10 @@ const ConcertCard = (props) => {
     <h4>{props.concert.venue.name}</h4>
     <h4>{props.concert.venue.city}, {props.concert.venue.region || props.concert.venue.country}</h4>
     <button id="add-event" onClick={ handleClick }> + </button>
+
+    <div style={{display: 'flex', justifyContent: 'center'}} >
+        <Dropdown />
+    </div>
     
   </div>
  )
