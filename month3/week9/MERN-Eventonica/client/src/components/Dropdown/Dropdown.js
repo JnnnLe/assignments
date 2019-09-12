@@ -7,8 +7,9 @@ class Dropdown extends React.Component {
   super();
 
   this.state = {
-        displayMenu: false,
-      };
+    displayMenu: false,
+    // users = props
+  };
 
     this.showDropdownMenu = this.showDropdownMenu.bind(this);
     this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
@@ -16,6 +17,7 @@ class Dropdown extends React.Component {
   };
 
   showDropdownMenu(event) {
+    console.log('USERS from porps:', this.props);
     event.preventDefault();
     this.setState({ displayMenu: true }, () => {
     document.addEventListener('click', this.hideDropdownMenu);

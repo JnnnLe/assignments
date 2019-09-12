@@ -39,15 +39,18 @@ class App extends React.Component {
 
   displayConcerts = () => {
     if (this.state.data == null || this.state.data == [] || this.state.data == `↵{warn=Not found}↵`) return;
-    return this.state.data.map(concert => <ConcertCard concert={concert}/>)
+    return this.state.data.map(concert => <ConcertCard concert={concert} users={this.state.users}/>)
   };
 
   getAllUsers = async () => {
-    // TODO: how do I get the users from the database?
     const backendEndpoint = `http://localhost:8080/api/allUsers`;
     let res = await axios.get(backendEndpoint)
-    console.log('*****', res);
+    this.setState({ users : res });
+    console.log('State: ', this.state);
   };
+  
+  // TODO: how do I get the users to passed down to dropdown?
+
 
   render() {
     return (

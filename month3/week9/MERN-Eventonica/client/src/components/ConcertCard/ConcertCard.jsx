@@ -21,7 +21,6 @@ const formatDate = (str) => {
 };
 
 const ConcertCard = (props) => {
-  
   const handleClick = e => {
     e.preventDefault();
     let clicked = props.concert.id; // found unique id for event
@@ -38,7 +37,7 @@ const ConcertCard = (props) => {
     <button id="add-event" onClick={ handleClick }> + </button>
 
     <div style={{display: 'flex', justifyContent: 'center'}} >
-        <Dropdown />
+      <Dropdown users={props}/>
     </div>
     
   </div>
