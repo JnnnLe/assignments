@@ -21,9 +21,9 @@ class Stack {
     return this.count;
   }
 
-  // Output of stack
-  isEmpty () {
-    return this.size == 0 ? true : false;
+  // peek at the last item
+  peek () {
+    return this.all[this.all.length - 1];
   }
 }
 
