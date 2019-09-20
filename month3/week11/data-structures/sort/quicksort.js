@@ -219,3 +219,5 @@ const quicksort = origArray => {
 
 
 console.log(quicksort(arr));
+
+// https://docs.google.com/presentation/d/19WPfnRwqbYtYjKPLbmxPYOez__BjqGxI5M6_VpJKryM/edit#slide=id.g601dee0a7b_0_727
